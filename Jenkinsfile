@@ -24,7 +24,7 @@ pipeline {
     stage ('sonar scanner analysis') {
       steps {
         withSonarQubeEnv('sonar-server') {
-          sb '''$SCANNER_HOME/bin/sonar-scanner mvn clean verify sonar:sonar -Dsonar.projectName=ekart-app -Dsonar.projectKey=ekart-app'''
+          sb '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=ekart-app -Dsonar.projectKey=ekart-app'''
         }
       }
     }    
