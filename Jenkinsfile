@@ -24,7 +24,10 @@ pipeline {
     stage ('sonar scanner analysis') {
       steps {
         withSonarQubeEnv('sonar-server') {
-          sb '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=ekart-app -Dsonar.projectKey=ekart-app'''
+          sb '''mvn clean verify sonar:sonar \
+  -Dsonar.projectKey=ekart-app \
+  -Dsonar.host.url=http://172.211.30.74:9000 \
+  -Dsonar.login=sqp_24c3a0762c6f7f72b922cf359e8d2329833510db'''
         }
       }
     }    
