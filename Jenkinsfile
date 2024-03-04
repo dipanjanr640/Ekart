@@ -21,6 +21,11 @@ pipeline {
         sh "mvn test -DskipTests=true"
       }
     }
+    stage ('mvn build') {
+      steps {
+        sh "mvn clean install"
+      }
+    }
     stage ('sonar scanner analysis') {
       steps {
         withSonarQubeEnv('sonar-server') {
